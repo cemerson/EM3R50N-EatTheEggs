@@ -1,0 +1,10 @@
+language.name=English
+language.region=US
+language.code=en_US
+
+?? item.item_food_eggs_scrambled.name=\FFAA00Scrambled Eggs!
+?? item.item_food_eggs_fried.name=\FFFF55Fried Egg!
+?? item.item_food_eggs_and_bacon.name=\FFAA00Scrambled Eggs and Bacon!
+?? item.item_food_eggs_and_beef.name=\FFAA00Scrambled Eggs and Beef!
+?? item.item_food_toast.name=\FFFFFFToast
+?? item.item_food_bread.name=\FFFFFFBread

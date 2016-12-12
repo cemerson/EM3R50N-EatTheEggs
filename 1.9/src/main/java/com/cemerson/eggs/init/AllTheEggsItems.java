@@ -150,13 +150,13 @@ public class AllTheEggsItems {
 //																				 	 "   ",
 //																				 	 'R',item_food_eggs_raw,
 		//cheese w/yellow		
-		GameRegistry.addShapelessRecipe(new ItemStack(item_food_cheese), 
+		GameRegistry.addShapelessRecipe(new ItemStack(item_food_cheese,16), 
 				new Object[]{
 						new ItemStack(Items.dye, 1, 11),
 						Items.milk_bucket});
 		
 		//cheese w/white dye
-		GameRegistry.addShapelessRecipe(new ItemStack(item_food_cheese), 
+		GameRegistry.addShapelessRecipe(new ItemStack(item_food_cheese,16), 
 				new Object[]{
 						new ItemStack(Items.dye, 1, 0),
 						Items.milk_bucket});		

@@ -1,0 +1,16 @@
+[
+{
+  "modid": "eggs",
+  "name": "Eat the Eggs!",
+  "description": "Adds a few new recipes to make eggs more useful and fun!",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/2662017-eat-the-eggs-adds-a-few-new-recipes-to-make-eggs",
+  "updateUrl": "",
+  "authorList": ["EM3R50N"],
+  "credits": "MrCrayfish's awesome mod tutorials! (mrcrayfish.com)",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

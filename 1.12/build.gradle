@@ -15,7 +15,7 @@ compileJava {
     sourceCompatibility = targetCompatibility = '1.8'
 }
 
-version = "1.12-14.21.0.2327"
+version = "1.12-14.21.0.2327.20170620"
 group= "com.cemerson.eggs" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "EM3R50N-EatTheEggs"
 // old 1.9-12.16.0.1853-1.9

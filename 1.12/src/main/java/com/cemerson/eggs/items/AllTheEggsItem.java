@@ -17,6 +17,8 @@ public class AllTheEggsItem extends ItemFood {
 		super(healAmount, potionEffectProbability, alwaysEdible);
 		displayName = name;
 		foodUsesBowl = usesBowl;
+		
+		
         // no break!
         // this.setBlockUnbreakable();
         
@@ -31,13 +33,16 @@ public class AllTheEggsItem extends ItemFood {
 //	}
 //	
 	
-	//@Override
-	public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, ITooltipFlag advanced) {
+
+	@Override
+	public void addInformation(ItemStack stack, World entityWorld, List<String> tooltip, ITooltipFlag advanced) {
+	// public void addInformation(ItemStack stack, EntityPlayer playerIn, List<String> tooltip, ITooltipFlag advanced) {
 		// TODO Auto-generated method stub		
 		tooltip.add("\u00A7o\u00A78Mod: All The Eggs!");
 		stack.setStackDisplayName(displayName);
 		// super.addInformation(stack, playerIn, tooltip, advanced);
-		super.addInformation(stack,playerIn.getEntityWorld(),tooltip,advanced);
+		super.addInformation(stack,entityWorld,tooltip,advanced);
+
 	}
 
 	@Override

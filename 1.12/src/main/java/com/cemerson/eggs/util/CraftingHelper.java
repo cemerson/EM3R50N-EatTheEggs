@@ -5,19 +5,24 @@ import java.util.List;
 import com.cemerson.eggs.Reference;
 import com.cemerson.eggs.items.AllTheEggsItem;
 
+import jline.internal.Log;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.item.crafting.ShapelessRecipes;
+import net.minecraft.stats.RecipeBook;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreIngredient;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
+import net.minecraftforge.registries.IForgeRegistry;
 
 // based on this:
 // https://gist.github.com/Shadows-of-Fire/8f164e07d63ec9b7f43a804137455025
@@ -31,117 +36,177 @@ public class CraftingHelper {
 
 	/*
 	 * This adds the recipe to the list of crafting recipes.  Since who cares about names, it adds it as recipesX, where X is the current recipe you are adding.
-	 */
-	public static void addRecipe(int j, IRecipe rec) {
+	 */	
+
+	//  * This should only be used for registering recipes for vanilla objects and not mod-specific objects.
+	//  * @param name The name of the recipe.
+	//  * @param stack The output stack.
+	//  * @param recipeComponents The recipe components.
+	//  */
+//	 public static void addShapelessRecipe(RegistryEvent.Register<Item> event, 
+//			 								String name, ItemStack stack, Object... recipeComponents)
+//	 {
+//		 		 
+//	     name = Reference.MOD_ID.toLowerCase() + ":" + name;
+//	     NonNullList<Ingredient> list = NonNullList.create();
+//	
+//	     for (Object object : recipeComponents)
+//	     {
+//	         if (object instanceof ItemStack)
+//	         {
+//	        	 Log.info("**** EAT THE EGGS: *STACK* addShapelessRecipe() [" + name + "]..");
+//	             list.add(Ingredient.fromStacks(((ItemStack)object).copy()));
+//	         }
+//	         else if (object instanceof Item)
+//	         {
+//	        	 Log.info("**** EAT THE EGGS: *ITEM* addShapelessRecipe() [" + name + "]..");
+//	             list.add(Ingredient.fromStacks(new ItemStack((Item)object)));
+//	         }
+//	         else
+//	         {
+//	        	 Log.info("**** EAT THE EGGS: ERROR? addShapelessRecipe() [" + name + "]..");
+//	             if (!(object instanceof Block))
+//	             {
+//	                 throw new IllegalArgumentException("Invalid shapeless recipe: unknown type " + object.getClass().getName() + "!");
+//	             }
+//	         }
+//	     }
+//	     
+//	     
+//
+//	     ShapelessRecipes shapelessRecipes = new ShapelessRecipes(name, stack, list);
+//	     
+////	     GameRegistry.registe
+////	     
+////		 	// CraftingManager.func_193379_a(name, shapelessRecipes);
+////	     final IForgeRegistry<Rec> registry = event.getRegistry();
+////	     
+//	     event.getRegistry().register(shapelessRecipes);
+//	      
+//	     // RegistryEvent<IForgeRegistryEntry<T>>.Register<IForgeRegistryEntry<T>>
+//	     // CraftingManager.
+//	 	
+//
+//	 	
+//	     
+//	 }
+// 
+//	
+	public static void addRecipe(RegistryEvent.Register<IRecipe> event, int j, IRecipe rec) {
+		final IForgeRegistry<IRecipe> registry = event.getRegistry();
+		
 	    if(rec.getRegistryName() == null)
-		GameRegistry.register(rec.setRegistryName(new ResourceLocation(MODID, "recipes" + j)));
-	    else GameRegistry.register(rec);
+	    	registry.register(rec.setRegistryName(new ResourceLocation(MODID, "recipes" + j)));
+	    else registry.register(rec);
 	}
 
 	/*
 	 * This adds the recipe to the list of crafting recipes.  Cares about names.
 	 */
-	public static void addRecipe(String name, IRecipe rec) {
+	public static void addRecipe(RegistryEvent.Register<IRecipe> event, String name, IRecipe rec) {
+		
+		final IForgeRegistry<IRecipe> registry = event.getRegistry();
+        	
 	    if(rec.getRegistryName() == null)
-		GameRegistry.register(rec.setRegistryName(new ResourceLocation(MODID, name)));
-	    else GameRegistry.register(rec);
+	    	registry.register(rec.setRegistryName(new ResourceLocation(MODID, name)));
+	    else registry.register(rec);
 	}
 
 	/*
 	 * This adds a shaped recipe to the list of crafting recipes, using the forge format.
 	 */
-	public static void addOldShaped(ItemStack output, Object... input) {
-		addRecipe(j++, new ShapedOreRecipe(new ResourceLocation(MODID, "recipes" + j), output, input));
+	public static void addOldShaped(RegistryEvent.Register<IRecipe> event, ItemStack output, Object... input) {
+		addRecipe(event, j++, new ShapedOreRecipe(new ResourceLocation(MODID, "recipes" + j), output, input));
 	}
 
 	/*
 	 * This adds a shaped recipe to the list of crafting recipes, using the forge format, with a custom group.
 	 */
-	public static void addOldShaped(String group, ItemStack output, Object... input) {
-		addRecipe(j++, new ShapedOreRecipe(new ResourceLocation(MODID, group), output, input));
+	public static void addOldShaped(RegistryEvent.Register<IRecipe> event, String group, ItemStack output, Object... input) {
+		addRecipe(event, j++, new ShapedOreRecipe(new ResourceLocation(MODID, group), output, input));
 	}
 	
 	   /*
      * This adds a shaped recipe to the list of crafting recipes, using the forge format, with a custom group.
      */
-    public static void addOldShaped(String name, String group, ItemStack output, Object... input) {
-        addRecipe(j++, new ShapedOreRecipe(new ResourceLocation(MODID, group), output, input).setRegistryName(MODID, name));
+    public static void addOldShaped(RegistryEvent.Register<IRecipe> event, String name, String group, ItemStack output, Object... input) {
+        addRecipe(event, j++, new ShapedOreRecipe(new ResourceLocation(MODID, group), output, input).setRegistryName(MODID, name));
     }
 
 	/*
 	 * This adds a shapeless recipe to the list of crafting recipes, using the forge format.
 	 */
-	public static void addOldShapeless(ItemStack output, Object... input) {
-		addRecipe(j++, new ShapelessOreRecipe(new ResourceLocation(MODID, "recipes" + j), output, input));
+	public static void addOldShapeless(RegistryEvent.Register<IRecipe> event, ItemStack output, Object... input) {
+		addRecipe(event, j++, new ShapelessOreRecipe(new ResourceLocation(MODID, "recipes" + j), output, input));
 	}
 
 	/*
 	 * This adds a shapeless recipe to the list of crafting recipes, using the forge format, with a custom group.
 	 */
-	public static void addOldShapeless(String group, ItemStack output, Object... input) {
-		addRecipe(j++, new ShapelessOreRecipe(new ResourceLocation(MODID, group), output, input));
+	public static void addOldShapeless(RegistryEvent.Register<IRecipe> event, String group, ItemStack output, Object... input) {
+		addRecipe(event, j++, new ShapelessOreRecipe(new ResourceLocation(MODID, group), output, input));
 	}
 
 	/*
 	 * Adds a shapeless recipe with X output using an array of inputs. Use Strings for OreDictionary support. This array is not ordered.
 	 */
-	public static void addShapeless(ItemStack output, Object... inputs) {
-		addRecipe(j++, new ShapelessRecipes(MODID + ":" + j, output, createInput(inputs)));
+	public static void addShapeless(RegistryEvent.Register<IRecipe> event, ItemStack output, Object... inputs) {
+		addRecipe(event, j++, new ShapelessRecipes(MODID + ":" + j, output, createInput(inputs)));
 	}
 
-	public static void addShapeless(Item output, Object... inputs) {
-		addShapeless(new ItemStack(output), inputs);
+	public static void addShapeless(RegistryEvent.Register<IRecipe> event, Item output, Object... inputs) {
+		addShapeless(event, new ItemStack(output), inputs);
 	}
 
-	public static void addShapeless(Block output, Object... inputs) {
-		addShapeless(new ItemStack(output), inputs);
+	public static void addShapeless(RegistryEvent.Register<IRecipe> event, Block output, Object... inputs) {
+		addShapeless(event, new ItemStack(output), inputs);
 	}
 
 	/*
 	 * Adds a shapeless recipe with X output using an array of inputs. Use Strings for OreDictionary support. This array is not ordered.  This has a custom group.
 	 */
-	public static void addShapeless(String group, ItemStack output, Object... inputs) {
-		addRecipe(j++, new ShapelessRecipes(MODID + ":" + group, output, createInput(inputs)));
+	public static void addShapeless(RegistryEvent.Register<IRecipe> event, String group, ItemStack output, Object... inputs) {
+		addRecipe(event, j++, new ShapelessRecipes(MODID + ":" + group, output, createInput(inputs)));
 	}
 
-	public static void addShapeless(String group, Item output, Object... inputs) {
-		addShapeless(group, new ItemStack(output), inputs);
+	public static void addShapeless(RegistryEvent.Register<IRecipe> event, String group, Item output, Object... inputs) {
+		addShapeless(event, group, new ItemStack(output), inputs);
 	}
 
-	public static void addShapeless(String group, Block output, Object... inputs) {
-		addShapeless(group, new ItemStack(output), inputs);
+	public static void addShapeless(RegistryEvent.Register<IRecipe> event, String group, Block output, Object... inputs) {
+		addShapeless(event, group, new ItemStack(output), inputs);
 	}
 
 	/*
 	 * Adds a shapeless recipe with X output on a crafting grid that is W x H, using an array of inputs.  Use null for nothing, use Strings for OreDictionary support, this array must have a length of width * height.
 	 * This array is ordered, and items must follow from left to right, top to bottom of the crafting grid.
 	 */
-	public static void addShaped(ItemStack output, int width, int height, Object... input) {
-		addRecipe(j++, genShaped(output, width, height, input));
+	public static void addShaped(RegistryEvent.Register<IRecipe> event, ItemStack output, int width, int height, Object... input) {
+		addRecipe(event, j++, genShaped(output, width, height, input));
 	}
 
-	public static void addShaped(Item output, int width, int height, Object... input) {
-		addShaped(new ItemStack(output), width, height, input);
+	public static void addShaped(RegistryEvent.Register<IRecipe> event, Item output, int width, int height, Object... input) {
+		addShaped(event, new ItemStack(output), width, height, input);
 	}
 
-	public static void addShaped(Block output, int width, int height, Object... input) {
-		addShaped(new ItemStack(output), width, height, input);
+	public static void addShaped(RegistryEvent.Register<IRecipe> event, Block output, int width, int height, Object... input) {
+		addShaped(event, new ItemStack(output), width, height, input);
 	}
 
 	/*
 	 * Adds a shapeless recipe with X output on a crafting grid that is W x H, using an array of inputs.  Use null for nothing, use Strings for OreDictionary support, this array must have a length of width * height.
 	 * This array is ordered, and items must follow from left to right, top to bottom of the crafting grid. This has a custom group.
 	 */
-	public static void addShaped(String group, ItemStack output, int width, int height, Object... input) {
-		addRecipe(j++, genShaped(MODID + ":" + group, output, width, height, input));
+	public static void addShaped(RegistryEvent.Register<IRecipe> event, String group, ItemStack output, int width, int height, Object... input) {
+		addRecipe(event, j++, genShaped(MODID + ":" + group, output, width, height, input));
 	}
 
-	public static void addShaped(String group, Item output, int width, int height, Object... input) {
-		addShaped(group, new ItemStack(output), width, height, input);
+	public static void addShaped(RegistryEvent.Register<IRecipe> event, String group, Item output, int width, int height, Object... input) {
+		addShaped(event, group, new ItemStack(output), width, height, input);
 	}
 
-	public static void addShaped(String group, Block output, int width, int height, Object... input) {
-		addShaped(group, new ItemStack(output), width, height, input);
+	public static void addShaped(RegistryEvent.Register<IRecipe> event, String group, Block output, int width, int height, Object... input) {
+		addShaped(event, group, new ItemStack(output), width, height, input);
 	}
 
 	public static ShapedRecipes genShaped(ItemStack output, int l, int w, Object[] input) {

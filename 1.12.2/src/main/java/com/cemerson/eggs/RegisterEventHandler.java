@@ -1,8 +1,10 @@
 package com.cemerson.eggs;
 
+import org.jline.utils.Log;
+
 import com.cemerson.eggs.init.AllTheEggsItems;
 
-import jline.internal.Log;
+// import jline.internal.Log;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.item.Item;

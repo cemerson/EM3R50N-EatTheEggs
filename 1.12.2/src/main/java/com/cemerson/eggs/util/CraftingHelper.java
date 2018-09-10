@@ -5,7 +5,7 @@ import java.util.List;
 import com.cemerson.eggs.Reference;
 import com.cemerson.eggs.items.AllTheEggsItem;
 
-import jline.internal.Log;
+// import jline.internal.Log;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;

@@ -15,13 +15,13 @@ compileJava {
     sourceCompatibility = targetCompatibility = '1.8'
 }
 
-version = "1.12.2-14.23.4.2703" 
+version = "1.12.2-14.23.4.2760" 
 group= "com.cemerson.eggs" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "EM3R50N-EatTheEggs"
 // old 1.9-12.16.0.1853-1.9
 // 13.19.1.2188
 minecraft {
-    version = "1.12.2-14.23.4.2703"
+    version = "1.12.2-14.23.4.2760"
     runDir = "run"
     
     // the mappings can be changed at any time, and must be in the following format.
@@ -29,7 +29,7 @@ minecraft {
     // stable_#            stables are built at the discretion of the MCP team.
     // Use non-default mappings at your own risk. they may not always work.
     // simply re-run your setup task after changing the mappings to update your workspace.
-    mappings = "snapshot_20180830" //20161220"
+    mappings = "snapshot_20180904" //20161220"
     // makeObfSourceJar = false // an Srg named sources jar is made by default. uncomment this to disable.
 }
 

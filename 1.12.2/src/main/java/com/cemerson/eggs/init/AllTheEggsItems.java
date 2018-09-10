@@ -1,5 +1,7 @@
 package com.cemerson.eggs.init;
 
+import org.jline.utils.Log;
+
 import com.cemerson.eggs.Reference;
 import com.cemerson.eggs.items.AllTheEggsItem;
 import com.cemerson.eggs.util.CraftingHelper;
@@ -13,7 +15,7 @@ import net.minecraftforge.common.util.EnumHelper;
 
 // import net.minecraftforge.common.crafting.CraftingHelper;
 
-import jline.internal.Log;
+// import jline.internal.Log;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
@@ -357,8 +359,9 @@ public class AllTheEggsItems {
 	
 		// CEMERSON 20180903: regstier not working for ItemModelMesher in forge 1.12.2 yet? 
 	    
-		Minecraft.getMinecraft().getRenderItem()
-			.getItemModelMesher()		
+		Minecraft.getInstance()
+			.getRenderItem()
+			.getItemModelMesher()
 			.func_178086_a(item, 0, new ModelResourceLocation(
 					Reference.MOD_ID + ":" + item.getTranslationKey().substring(5),
 					"inventory"));

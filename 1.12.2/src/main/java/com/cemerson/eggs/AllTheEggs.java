@@ -3,7 +3,7 @@ package com.cemerson.eggs;
 import com.cemerson.eggs.init.AllTheEggsItems;
 import com.cemerson.eggs.proxy.CommonProxy;
 
-import jline.internal.Log;
+// import jline.internal.Log;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;

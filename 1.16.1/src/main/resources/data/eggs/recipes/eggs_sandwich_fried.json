@@ -1,0 +1,18 @@
+  {
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [        
+        {
+            "item": "eggs:food_toast"
+        },
+        {
+            "item": "eggs:food_toast"
+        },
+        {
+            "item": "eggs:eggs_fried"
+        }                        
+    ],    
+    "result": {
+      "item": "eggs:eggs_sandwich_fried",
+      "count": 1
+    }
+  }  

@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [        
+        {
+            "item": "minecraft:egg"
+        },
+        {
+            "item": "minecraft:egg"
+        },
+        {
+            "item": "minecraft:egg"
+        },
+        {
+            "item": "eggs:food_cheese"
+        },        
+        {
+            "item": "minecraft:bowl"
+        }                        
+    ],    
+    "result": {
+      "item": "eggs:eggs_scrambled_cheese",
+      "count": 1
+    }
+  }

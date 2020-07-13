@@ -1,0 +1,24 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [        
+        {
+            "item": "minecraft:egg"
+        },
+        {
+            "item": "minecraft:egg"
+        },
+        {
+            "item": "minecraft:egg"
+        },
+        {
+            "item": "minecraft:beef"
+        },        
+        {
+            "item": "minecraft:bowl"
+        }                        
+    ],    
+    "result": {
+      "item": "eggs:eggs_and_beef",
+      "count": 1
+    }
+  }

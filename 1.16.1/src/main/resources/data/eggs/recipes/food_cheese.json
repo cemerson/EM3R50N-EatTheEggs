@@ -1,0 +1,15 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [        
+        {
+            "item": "minecraft:milk_bucket"
+        },
+        {
+            "item": "minecraft:orange_dye"
+        }                        
+    ],    
+    "result": {
+      "item": "eggs:food_cheese",
+      "count": 16
+    }
+  }

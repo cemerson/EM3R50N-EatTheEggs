@@ -1,0 +1,8 @@
+{
+    "type": "minecraft:smelting",
+    "ingredient": {"item": "eggs:food_bread"},    
+    "result": "eggs:food_toast",
+    "count": 1,
+    "cookingtime":100,
+    "experience":0.35    
+}  

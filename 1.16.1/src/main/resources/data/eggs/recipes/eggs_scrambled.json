@@ -1,0 +1,21 @@
+{
+    "type": "minecraft:crafting_shapeless",
+    "ingredients": [        
+        {
+            "item": "minecraft:egg"
+        },
+        {
+            "item": "minecraft:egg"
+        },
+        {
+            "item": "minecraft:egg"
+        },
+        {
+            "item": "minecraft:bowl"
+        }                        
+    ],    
+    "result": {
+      "item": "eggs:eggs_scrambled",
+      "count": 1
+    }
+  }
